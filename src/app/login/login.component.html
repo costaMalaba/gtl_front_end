@@ -1,0 +1,23 @@
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Upload Excel File</h2>
+
+    <form (submit)="uploadFile()">
+        <div class="mb-3">
+            <label for="file" class="form-label">Choose Excel File</label>
+            <input
+                    type="file"
+                    id="file"
+                    class="form-control"
+                    accept=".xlsx, .xls"
+                    (change)="onFileChange($event)" />
+        </div>
+
+        <button
+                type="submit"
+                class="btn btn-primary w-100"
+                [disabled]="uploading || !file">
+            <span *ngIf="uploading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            {{ uploading ? 'Uploading...' : 'Upload' }}
+        </button>
+    </form>
+</div>
